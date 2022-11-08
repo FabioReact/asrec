@@ -1,11 +1,13 @@
 import axios from "axios"
 import { useEffect, useRef, useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import HeroLabel from '../components/HeroLabel/HeroLabel'
 import Spinner from '../components/Spinner/Spinner'
 import { Hero } from "../types/hero"
 
 
 const Heroes = () => {
+	const navigate = useNavigate()
 	const mountedRef = useRef(false)
 	const [selectedLetter, setSelectedLetter] = useState("A")
 	const [heroes, setHeroes] = useState<Hero[]>([])
@@ -76,7 +78,7 @@ const Heroes = () => {
 			{error && <p className='text-red-500'>Houston, we have a problem: {error}</p> }
 			{isLoading && <Spinner /> }
 			{!isLoading && heroes.map((hero) => (
-				<HeroLabel key={hero.id} id={hero.id} name={hero.name} />
+				<HeroLabel key={hero.id} id={hero.id} name={hero.name} onClick={() => navigate(hero.id)} />
 			))}
 		</>
 	)
