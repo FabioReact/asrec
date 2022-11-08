@@ -1,24 +1,29 @@
-import { useEffect } from 'react'
-import { Hero } from './../types/hero'
-import { useState } from 'react'
+import { useEffect, useReducer } from 'react'
+import { Hero } from '../types/hero'
 import { BASE_URL, fetcher } from '../api/fetcher'
+import { ActionNames, useSearchHeroReducer } from '../reducers/useSearchHeroReducer'
 
 const useSearchHero = (id: string) => {
-	const [hero, setHero] = useState<Hero | null>(null)
-	const [error, setError] = useState(null)
-	const [isLoading, setIsLoading] = useState(true)
-
+	const initialState = {
+		error: '',
+		isLoading: true,
+		hero: null,
+	}
+	const [{ error, hero, isLoading }, dispatch] = useReducer(useSearchHeroReducer, initialState)
 	useEffect(() => {
 		fetcher
 			.get<Hero>(`${BASE_URL}/heroes/${id}`)
 			.then((res) => {
-				setHero(res.data)
+				dispatch({
+					type: ActionNames.SET_HERO,
+					payload: res.data,
+				})
 			})
 			.catch((e) => {
-				setError(e.message)
-			})
-			.finally(() => {
-				setIsLoading(false)
+				dispatch({
+					type: ActionNames.SET_ERROR,
+					payload: e.message,
+				})
 			})
 	}, [])
 
