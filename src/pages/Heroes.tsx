@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useRef, useState } from "react"
+import { Link } from 'react-router-dom'
 import Spinner from '../components/Spinner/Spinner'
 import { Hero } from "../types/hero"
 
@@ -10,10 +11,10 @@ type HeroLabelProps = {
 
 const HeroLabel = ({ id, name }: HeroLabelProps) => {
 	return (
-		<p>
+		<Link to={id} className='block'>
 			<span className="font-semibold text-gray-500 pr-2 my-2">#{id}</span>
 			{name}
-		</p>
+		</Link>
 	)
 }
 
