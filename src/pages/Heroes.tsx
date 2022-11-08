@@ -1,22 +1,9 @@
 import axios from "axios"
 import { useEffect, useRef, useState } from "react"
-import { Link } from 'react-router-dom'
+import HeroLabel from '../components/HeroLabel/HeroLabel'
 import Spinner from '../components/Spinner/Spinner'
 import { Hero } from "../types/hero"
 
-type HeroLabelProps = {
-	id: string
-	name: string
-}
-
-const HeroLabel = ({ id, name }: HeroLabelProps) => {
-	return (
-		<Link to={id} className='block'>
-			<span className="font-semibold text-gray-500 pr-2 my-2">#{id}</span>
-			{name}
-		</Link>
-	)
-}
 
 const Heroes = () => {
 	const mountedRef = useRef(false)
