@@ -11,3 +11,14 @@ export const getHeroes = (name: string) => {
 			throw new Error('Server error', e.message)
 		})
 }
+
+export const getHeroById = (id: string) => {
+	return fetcher
+		.get<Hero>(`${BASE_URL}/heroes/${id}`)
+		.then(res => {
+			return res.data
+		})
+		.catch(e => {
+			throw new Error('Server error', e.message)
+		})
+}

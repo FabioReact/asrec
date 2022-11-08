@@ -5,3 +5,15 @@
 .text-center {
 	text-align: center;
 }
+
+button {
+	@apply bg-black text-white rounded py-1 px-5
+}
+
+h1 {
+	@apply text-center text-4xl uppercase tracking-widest font-thin my-6
+}
+
+input {
+	@apply border-b border-black mb-2 p-1
+}
