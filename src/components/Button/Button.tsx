@@ -14,9 +14,7 @@ const Button = ({ children = 'Default Button' }: Props) => {
 
 	return (
 		// <button style={styles}>
-		<button className={classes.button}>
-			{children}
-		</button>
+		<button className={classes.button}>{children}</button>
 	)
 }
 

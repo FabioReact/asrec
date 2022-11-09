@@ -1,8 +1,6 @@
 import { Hero } from '../types/hero'
 import { fetcher, BASE_URL } from './fetcher'
 
-
-
 export const getHeroes = ({
 	name,
 	intelligence,
@@ -29,10 +27,10 @@ export const getHeroes = ({
 	if (durability) query += `&powerstats.durability_gte=${durability}`
 	return fetcher
 		.get<Hero[]>(`${BASE_URL}/heroes?${query}`)
-		.then(res => {
+		.then((res) => {
 			return res.data
 		})
-		.catch(e => {
+		.catch((e) => {
 			throw new Error('Server error', e.message)
 		})
 }
@@ -40,10 +38,10 @@ export const getHeroes = ({
 export const getHeroById = (id: string) => {
 	return fetcher
 		.get<Hero>(`${BASE_URL}/heroes/${id}`)
-		.then(res => {
+		.then((res) => {
 			return res.data
 		})
-		.catch(e => {
+		.catch((e) => {
 			throw new Error('Server error', e.message)
 		})
 }

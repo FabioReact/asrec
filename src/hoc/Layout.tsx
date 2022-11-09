@@ -1,8 +1,8 @@
 import { NavLink, Outlet } from 'react-router-dom'
 
 const Layout = () => {
-
-	const getActiveClassName = ({ isActive }: { isActive: boolean }) => isActive ? 'text-red-600' : ''
+	const getActiveClassName = ({ isActive }: { isActive: boolean }) =>
+		isActive ? 'text-red-600' : ''
 
 	return (
 		<>
@@ -10,19 +10,34 @@ const Layout = () => {
 				<nav>
 					<ul className='flex justify-center gap-4 text-xl'>
 						<li>
-							<NavLink to="/" className={getActiveClassName}>Home</NavLink>
+							<NavLink to='/' className={getActiveClassName}>
+								Home
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="battle" className={getActiveClassName}>Battle</NavLink>
+							<NavLink to='battle' className={getActiveClassName}>
+								Battle
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="heroes" className={getActiveClassName}>Heroes</NavLink>
+							<NavLink to='heroes' className={getActiveClassName}>
+								Heroes
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="search" className={getActiveClassName}>Search</NavLink>
+							<NavLink to='search' className={getActiveClassName}>
+								Search
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="counter" className={getActiveClassName}>Counter</NavLink>
+							<NavLink to='profile' className={getActiveClassName}>
+								Profile
+							</NavLink>
+						</li>
+						<li>
+							<NavLink to='counter' className={getActiveClassName}>
+								Counter
+							</NavLink>
 						</li>
 					</ul>
 				</nav>

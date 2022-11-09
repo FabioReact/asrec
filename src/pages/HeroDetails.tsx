@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom"
+import { useLoaderData, useParams } from 'react-router-dom'
 import HeroCard from '../components/HeroCard/HeroCard'
 import Spinner from '../components/Spinner/Spinner'
 import { useSearchHero } from '../hooks/useSearchHero'

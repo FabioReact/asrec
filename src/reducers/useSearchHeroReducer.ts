@@ -5,13 +5,15 @@ export enum ActionNames {
 	SET_ERROR = 'SET_ERROR',
 }
 
-type ReducerAction = {
-	type: ActionNames.SET_HERO
-	payload: Hero
-} | {
-	type: ActionNames.SET_ERROR
-	payload: string
-}
+type ReducerAction =
+	| {
+			type: ActionNames.SET_HERO
+			payload: Hero
+	  }
+	| {
+			type: ActionNames.SET_ERROR
+			payload: string
+	  }
 
 type State = {
 	hero: Hero | null

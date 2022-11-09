@@ -1,24 +1,24 @@
-import { useEffect, useReducer } from "react"
-import { Hero } from "../types/hero"
-import { BASE_URL, fetcher } from "../api/fetcher"
-import {
-	ActionNames,
-	useSearchHeroesReducer,
-} from "../reducers/useSearchHeroesReducer"
+import { useReducer } from 'react'
+import { Hero } from '../types/hero'
+import { BASE_URL, fetcher } from '../api/fetcher'
+import { ActionNames, useSearchHeroesReducer } from '../reducers/useSearchHeroesReducer'
 
 const useSearchHeroes = () => {
 	const initialState = {
-		error: "",
+		error: '',
 		isLoading: false,
 		heroes: null,
 	}
-	const [{ error, heroes, isLoading }, dispatch] = useReducer(
-		useSearchHeroesReducer,
-		initialState,
-	)
+	const [{ error, heroes, isLoading }, dispatch] = useReducer(useSearchHeroesReducer, initialState)
 
 	const searchHeroes = ({
-		name, intelligence, strength, speed, combat, durability, power
+		name,
+		intelligence,
+		strength,
+		speed,
+		combat,
+		durability,
+		power,
 	}: {
 		name: string
 		intelligence?: string

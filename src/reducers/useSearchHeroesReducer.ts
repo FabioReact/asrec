@@ -6,15 +6,18 @@ export enum ActionNames {
 	SET_LOADING = 'SET_LOADING',
 }
 
-type ReducerAction = {
-	type: ActionNames.SET_HEROES
-	payload: Hero[]
-} | {
-	type: ActionNames.SET_ERROR
-	payload: string
-} | {
-	type: ActionNames.SET_LOADING
-}
+type ReducerAction =
+	| {
+			type: ActionNames.SET_HEROES
+			payload: Hero[]
+	  }
+	| {
+			type: ActionNames.SET_ERROR
+			payload: string
+	  }
+	| {
+			type: ActionNames.SET_LOADING
+	  }
 
 type State = {
 	heroes: Hero[] | null
