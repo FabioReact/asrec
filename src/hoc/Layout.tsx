@@ -8,7 +8,7 @@ const Layout = () => {
 		<>
 			<header>
 				<nav>
-					<ul className='flex justify-center gap-2 text-xl font-semibold'>
+					<ul className='flex justify-center gap-4 text-xl'>
 						<li>
 							<NavLink to="/" className={getActiveClassName}>Home</NavLink>
 						</li>
@@ -17,6 +17,9 @@ const Layout = () => {
 						</li>
 						<li>
 							<NavLink to="heroes" className={getActiveClassName}>Heroes</NavLink>
+						</li>
+						<li>
+							<NavLink to="search" className={getActiveClassName}>Search</NavLink>
 						</li>
 						<li>
 							<NavLink to="counter" className={getActiveClassName}>Counter</NavLink>

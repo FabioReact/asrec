@@ -5,6 +5,7 @@ import { getHeroById } from './api/heroes'
 import './App.css'
 import Spinner from './components/Spinner/Spinner'
 import Layout from './hoc/Layout'
+import Search from './pages/Search'
 
 const Heroes = lazy(() => import('./pages/Heroes'))
 const Battle = lazy(() => import('./pages/Battle'))
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
         errorElement={<p>Oops, we have a problem :/</p>}
       />
       <Route path="battle" element={<Battle />} />
+      <Route path="search" element={<Search />} />
       <Route path="counter" element={<Counter />} />
     </Route>
   )

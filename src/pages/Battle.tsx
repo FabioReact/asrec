@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import React, { useRef, useState } from "react"
 import { getHeroes } from "../api/heroes"
+import HeroCard from '../components/HeroCard/HeroCard'
 import HeroLabel from "../components/HeroLabel/HeroLabel"
 import { Hero } from "../types/hero"
 
@@ -13,7 +14,9 @@ const SelectPlayer = ({ label, onSelect }: SelectPlayerProps) => {
 	const inputRef = useRef<HTMLInputElement>(null)
 	const { data, error, isLoading, refetch } = useQuery(
 		["getHeroes", inputRef.current?.value],
-		() => getHeroes(inputRef.current?.value || ""),
+		() => getHeroes({
+			name: inputRef.current?.value || ""
+		}),
 		{
 			enabled: !!inputRef.current?.value,
 		},
@@ -26,7 +29,7 @@ const SelectPlayer = ({ label, onSelect }: SelectPlayerProps) => {
 	}
 
 	return (
-		<>
+		<section>
 			<form onSubmit={onSubmitHandler} className="flex flex-col">
 				<label
 					htmlFor={`player${label}`}
@@ -47,22 +50,27 @@ const SelectPlayer = ({ label, onSelect }: SelectPlayerProps) => {
 				{data &&
 					data.length &&
 					data.map((hero) => (
-						<HeroLabel key={hero.id} id={hero.id} name={hero.name} onClick={() => onSelect(hero.id)} />
+						<HeroLabel key={hero.id} id={hero.id} name={hero.name} onClick={() => onSelect(hero)} />
 					))}
 			</div>
-		</>
+		</section>
 	)
 }
 
 const Battle = () => {
-	const [playerOne, setPlayerOne] = useState(null)
-	const [playerTwo, setPlayerTwo] = useState(null)
+	const [playerOne, setPlayerOne] = useState<Hero | null>(null)
+	const [playerTwo, setPlayerTwo] = useState<Hero | null>(null)
+
 	return (
 		<section>
 			<h1>Battle</h1>
 			<div className="flex justify-center gap-24">
 				<SelectPlayer label="One" onSelect={setPlayerOne} />
 				<SelectPlayer label="Two" onSelect={setPlayerTwo} />
+			</div>
+			<div className="flex justify-center gap-24">
+				{playerOne && <HeroCard hero={playerOne} /> }
+				{playerTwo && <HeroCard hero={playerTwo} /> }
 			</div>
 			{playerOne && playerTwo && (
 				<div>
