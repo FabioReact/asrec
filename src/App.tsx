@@ -1,8 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { lazy, Suspense, useState } from 'react'
+import { Provider } from 'react-redux'
 import {
 	createBrowserRouter,
 	createRoutesFromElements,
+	redirect,
 	Route,
 	RouterProvider,
 } from 'react-router-dom'
@@ -11,7 +13,8 @@ import './App.css'
 import Spinner from './components/Spinner/Spinner'
 import ProfileContext from './context/profile-context'
 import Layout from './hoc/Layout'
-import Search from './pages/Search'
+import { useAppSelector } from './redux/hooks'
+import { store } from './redux/store'
 import { Hero } from './types/hero'
 
 const Heroes = lazy(() => import('./pages/Heroes'))
@@ -19,8 +22,19 @@ const Battle = lazy(() => import('./pages/Battle'))
 const HeroDetails = lazy(() => import('./pages/HeroDetails'))
 const Counter = lazy(() => import('./pages/Counter/Counter'))
 const Profile = lazy(() => import('./pages/Profile'))
+const Search = lazy(() => import('./pages/Search'))
+const Login = lazy(() => import('./pages/Login'))
 
 const queryClient = new QueryClient()
+
+// import { redirect } from "react-router-dom";
+
+// const loader = async () => {
+//   const user = await getUser();
+//   if (!user) {
+//     return redirect("/login");
+//   }
+// };
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -40,6 +54,7 @@ const router = createBrowserRouter(
 			<Route path='search' element={<Search />} />
 			<Route path='counter' element={<Counter />} />
 			<Route path='profile' element={<Profile />} />
+			<Route path='login' element={<Login />} />
 		</Route>,
 	),
 )
@@ -47,18 +62,20 @@ const router = createBrowserRouter(
 function App() {
 	const [favoriteHero, setFavoriteHero] = useState<Hero | null>(null)
 	return (
-		<QueryClientProvider client={queryClient}>
-			<Suspense fallback={<Spinner />}>
-				<ProfileContext.Provider
-					value={{
-						favoriteHero,
-						setFavoriteHero,
-					}}
-				>
-					<RouterProvider router={router} />
-				</ProfileContext.Provider>
-			</Suspense>
-		</QueryClientProvider>
+		<Provider store={store}>
+			<QueryClientProvider client={queryClient}>
+				<Suspense fallback={<Spinner />}>
+					<ProfileContext.Provider
+						value={{
+							favoriteHero,
+							setFavoriteHero,
+						}}
+					>
+						<RouterProvider router={router} />
+					</ProfileContext.Provider>
+				</Suspense>
+			</QueryClientProvider>
+		</Provider>
 	)
 }
 

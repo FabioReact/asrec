@@ -1,8 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import { useAppSelector } from '../redux/hooks'
 
 const Layout = () => {
 	const getActiveClassName = ({ isActive }: { isActive: boolean }) =>
 		isActive ? 'text-red-600' : ''
+
+	const { connected } = useAppSelector((state) => state.profile)
 
 	return (
 		<>
@@ -29,16 +32,25 @@ const Layout = () => {
 								Search
 							</NavLink>
 						</li>
-						<li>
-							<NavLink to='profile' className={getActiveClassName}>
-								Profile
-							</NavLink>
-						</li>
+						{connected && (
+							<li>
+								<NavLink to='profile' className={getActiveClassName}>
+									Profile
+								</NavLink>
+							</li>
+						)}
 						<li>
 							<NavLink to='counter' className={getActiveClassName}>
 								Counter
 							</NavLink>
 						</li>
+						{!connected && (
+							<li>
+								<NavLink to='login' className={getActiveClassName}>
+									Login
+								</NavLink>
+							</li>
+						)}
 					</ul>
 				</nav>
 			</header>
