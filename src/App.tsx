@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import {
 	createBrowserRouter,
 	createRoutesFromElements,
-	redirect,
 	Route,
 	RouterProvider,
 } from 'react-router-dom'
@@ -13,7 +12,6 @@ import './App.css'
 import Spinner from './components/Spinner/Spinner'
 import ProfileContext from './context/profile-context'
 import Layout from './hoc/Layout'
-import { useAppSelector } from './redux/hooks'
 import { store } from './redux/store'
 import { Hero } from './types/hero'
 
@@ -24,6 +22,7 @@ const Counter = lazy(() => import('./pages/Counter/Counter'))
 const Profile = lazy(() => import('./pages/Profile'))
 const Search = lazy(() => import('./pages/Search'))
 const Login = lazy(() => import('./pages/Login'))
+const Register = lazy(() => import('./pages/Register'))
 
 const queryClient = new QueryClient()
 
@@ -55,6 +54,7 @@ const router = createBrowserRouter(
 			<Route path='counter' element={<Counter />} />
 			<Route path='profile' element={<Profile />} />
 			<Route path='login' element={<Login />} />
+			<Route path='register' element={<Register />} />
 		</Route>,
 	),
 )

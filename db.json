@@ -1,10 +1,25 @@
 {
   "users": [
     {
-      "email": "fabio@email.fr",
       "password": "$2a$10$dziMBFhzDg9M3UgENvR34eM49xyIhlS7sig6TFQFNvG2m/3laCBPy",
-      "pseudo": "fabio",
+      "username": "fabio",
       "id": 1
+    },
+    {
+      "email": "fabio@email.com",
+      "password": "$2a$10$QMzISWqYmnDqGLhkPHy9Ze.VaTHLBeNSD8fI77fo7CPA81eUo5rXa",
+      "username": "fabio",
+      "id": 2
+    },
+    {
+      "email": "test@email.com",
+      "password": "$2a$10$.GQuP16ieuf4jXuZf0XxXeIuNaVAvz7spmTEpmu7zMsV/mDOuEE6K",
+      "id": 3
+    },
+    {
+      "email": "robert@email.com",
+      "password": "$2a$10$l.0178/rhbi/lgS2i9QeUeb9Xqd5eZU62Zhz5eNZELPFpk04X6ogS",
+      "id": 4
     }
   ],
   "heroes": [

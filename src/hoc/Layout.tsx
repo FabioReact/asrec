@@ -45,11 +45,18 @@ const Layout = () => {
 							</NavLink>
 						</li>
 						{!connected && (
-							<li>
-								<NavLink to='login' className={getActiveClassName}>
-									Login
-								</NavLink>
-							</li>
+							<>
+								<li>
+									<NavLink to='login' className={getActiveClassName}>
+										Login
+									</NavLink>
+								</li>
+								<li>
+									<NavLink to='register' className={getActiveClassName}>
+										Register
+									</NavLink>
+								</li>
+							</>
 						)}
 					</ul>
 				</nav>
