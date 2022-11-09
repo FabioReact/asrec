@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { getHeroes } from '../../api/heroes'
 import { Hero } from '../../types/hero'
 import HeroLabel from '../HeroLabel/HeroLabel'
+import Spinner from '../Spinner/Spinner'
 
 type SelectPlayerProps = {
 	label?: string
@@ -45,6 +46,8 @@ const SelectPlayer = ({
 				<button>Search</button>
 			</form>
 			<div className='flex flex-col'>
+				{!!error && <p className='text-red-500'>{(error as Error).message}</p>}
+				{isLoading && <Spinner />}
 				{data &&
 					data.length &&
 					data.map((hero) => (

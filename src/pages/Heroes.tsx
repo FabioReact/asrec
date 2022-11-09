@@ -1,13 +1,12 @@
 import axios from 'axios'
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import HeroCard from '../components/HeroCard/HeroCard'
 // import HeroLabel from "../components/HeroLabel/HeroLabel"
 import Spinner from '../components/Spinner/Spinner'
 import { Hero } from '../types/hero'
 
 const Heroes = () => {
-	const navigate = useNavigate()
 	const [searchParams, setSearchParams] = useSearchParams()
 	const mountedRef = useRef(false)
 	const [selectedLetter, setSelectedLetter] = useState(searchParams.get('q') || 'A')
