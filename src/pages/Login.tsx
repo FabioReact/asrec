@@ -16,7 +16,7 @@ const Login = () => {
 	}
 
 	return (
-		<section>
+		<section className='flex flex-col items-center'>
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit(onSubmitHandler)}>
 				<fieldset>

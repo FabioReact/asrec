@@ -17,8 +17,8 @@ const SelectPlayer = ({
 	},
 }: SelectPlayerProps) => {
 	const inputRef = useRef<HTMLInputElement>(null)
-	const { data, error, isLoading, refetch } = useQuery(
-		['getHeroes', inputRef.current?.value],
+	const { data, error, refetch, isFetching, isLoading } = useQuery(
+		['getHeroes', inputRef.current?.value, label],
 		() =>
 			getHeroes({
 				name: inputRef.current?.value || '',
@@ -41,13 +41,12 @@ const SelectPlayer = ({
 				<label htmlFor={`player${label}`} className='uppercase font-thin tracking-widest text-lg'>
 					Select Player {label}
 				</label>
-				{/* <input type="text" id={`player${label}`} name={`player${label}`} value={player} onChange={onChangeHandler} /> */}
 				<input type='text' id={`player${label}`} name={`player${label}`} ref={inputRef} />
 				<button>Search</button>
 			</form>
 			<div className='flex flex-col'>
 				{!!error && <p className='text-red-500'>{(error as Error).message}</p>}
-				{isLoading && <Spinner />}
+				{isFetching && isLoading && <Spinner />}
 				{data &&
 					data.length &&
 					data.map((hero) => (

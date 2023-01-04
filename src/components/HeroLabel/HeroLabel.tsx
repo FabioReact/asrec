@@ -1,5 +1,5 @@
 type HeroLabelProps = {
-	id: string
+	id: number
 	name: string
 	onClick: () => void
 }

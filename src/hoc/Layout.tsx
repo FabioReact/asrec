@@ -8,7 +8,7 @@ const Layout = () => {
 	const { connected } = useAppSelector((state) => state.profile)
 
 	return (
-		<>
+		<div className='flex flex-col min-h-screen'>
 			<header>
 				<nav>
 					<ul className='flex justify-center gap-4 text-xl'>
@@ -61,9 +61,11 @@ const Layout = () => {
 					</ul>
 				</nav>
 			</header>
-			<Outlet />
-			<footer>Copyright</footer>
-		</>
+			<main className='grow'>
+				<Outlet />
+			</main>
+			<footer className='flex justify-center'>Copyright SuperHero 2023</footer>
+		</div>
 	)
 }
 

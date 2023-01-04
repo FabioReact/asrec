@@ -8,13 +8,13 @@ import {
 	RouterProvider,
 } from 'react-router-dom'
 import { getHeroById } from './api/heroes'
-import './App.css'
 import Spinner from './components/Spinner/Spinner'
 import ProfileContext from './context/profile-context'
 import Layout from './hoc/Layout'
 import { store } from './redux/store'
 import { Hero } from './types/hero'
 
+const Home = lazy(() => import('./pages/Home'))
 const Heroes = lazy(() => import('./pages/Heroes'))
 const Battle = lazy(() => import('./pages/Battle'))
 const HeroDetails = lazy(() => import('./pages/HeroDetails'))
@@ -38,6 +38,7 @@ const queryClient = new QueryClient()
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<Layout />}>
+			<Route index element={<Home />} />
 			<Route path='heroes' element={<Heroes />} />
 			<Route
 				path='heroes/:id'

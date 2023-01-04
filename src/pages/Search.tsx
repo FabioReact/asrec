@@ -26,23 +26,25 @@ const Search = () => {
 	return (
 		<section>
 			<h1>Search</h1>
-			<form onSubmit={onSubmitHandler}>
+			<form onSubmit={onSubmitHandler} className='flex flex-col items-center'>
 				<fieldset>
 					<label htmlFor='name'>Name</label>
 					<input type='text' id='name' name='name' ref={nameRef} />
 				</fieldset>
 				<fieldset>
 					<label htmlFor='int'>Intelligence</label>
-					<input type='range' id='int' name='int' max='99' ref={intRef} />
+					<input type='range' id='int' name='int' min='1' max='100' ref={intRef} />
 				</fieldset>
 				<fieldset>
 					<label htmlFor='str'>Strength</label>
-					<input type='range' id='str' name='str' max='99' ref={strRef} />
+					<input type='range' id='str' name='str' min='1' max='100' ref={strRef} />
 				</fieldset>
 				<button>Search</button>
 			</form>
-			{error && <p className='text-red-500'>{error}</p>}
-			{isLoading && <Spinner />}
+			<div className='flex justify-center'>
+				{error && <p className='text-red-500'>{error}</p>}
+				{isLoading && <Spinner />}
+			</div>
 			{heroes && (
 				<div className='flex flex-wrap justify-center gap-6'>
 					{heroes.map((hero) => (

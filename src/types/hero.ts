@@ -1,13 +1,13 @@
 export type Hero = {
-	id: string
+	id: number
 	name: string
 	powerstats: {
-		intelligence: string
-		strength: string
-		speed: string
-		durability: string
-		power: string
-		combat: string
+		intelligence: number
+		strength: number
+		speed: number
+		durability: number
+		power: number
+		combat: number
 	}
 	biography: {
 		'full-name': string

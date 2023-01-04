@@ -6,7 +6,7 @@
 	text-align: center;
 }
 
-button {
+button, .btn {
 	@apply bg-black text-white rounded py-1 px-5
 }
 

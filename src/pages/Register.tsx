@@ -17,7 +17,7 @@ const Register = () => {
 	}
 
 	return (
-		<section>
+		<section className='flex flex-col items-center'>
 			<h1>Register</h1>
 			<form onSubmit={handleSubmit(onSubmitHandler)}>
 				<fieldset>

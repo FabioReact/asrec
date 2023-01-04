@@ -11,7 +11,7 @@ const HeroDetails = () => {
 	const { isLoading, error, data: hero } = useGetHeroByIdQuery(id || '')
 	// const { error, hero, isLoading } = useSearchHero(id!)
 	return (
-		<section>
+		<section className='flex flex-col items-center'>
 			<h1>Hero Details</h1>
 			{isLoading && <Spinner />}
 			{error && <p className='text-red-500'>{error as string}</p>}

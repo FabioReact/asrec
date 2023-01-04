@@ -39,7 +39,7 @@ const Heroes = () => {
 				setIsLoading(false)
 			})
 			.catch((e) => {
-				setError(e.message)
+				if (e.name !== 'CanceledError') setError(e.message)
 			})
 		mountedRef.current = true
 		return () => {
@@ -66,10 +66,11 @@ const Heroes = () => {
 
 	return (
 		<>
-			<ul className='flex justify-center gap-2 font-semibold text-xl'>
+			<h1>Heroes List</h1>
+			<ul className='flex justify-center gap-2 font-semibold text-xl mb-5'>
 				{letters.map((letter) => (
 					<li
-						className={selectedLetter === letter ? 'text-red-600' : ''}
+						className={selectedLetter === letter ? 'text-red-600 cursor-pointer' : 'cursor-pointer'}
 						key={letter}
 						onClick={() => onClickLetter(letter)}
 					>
@@ -77,9 +78,10 @@ const Heroes = () => {
 					</li>
 				))}
 			</ul>
-			<p>Vous avez cliqué sur la lettre {selectedLetter}.</p>
-			{error && <p className='text-red-500'>Houston, we have a problem: {error}</p>}
-			{isLoading && <Spinner />}
+			<div className='flex flex-col items-center'>
+				{error && <p className='text-red-500'>Houston, we have a problem: {error}</p>}
+				{isLoading && <Spinner />}
+			</div>
 			<div className='flex flex-wrap gap-4 justify-center'>
 				{!isLoading &&
 					heroes.map((hero) => (
@@ -89,7 +91,7 @@ const Heroes = () => {
 						// 	name={hero.name}
 						// 	onClick={() => navigate(hero.id)}
 						// />
-						<Link to={hero.id} key={hero.id}>
+						<Link to={`${hero.id}`} key={hero.id}>
 							<HeroCard hero={hero} />
 						</Link>
 					))}
